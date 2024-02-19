@@ -102,13 +102,10 @@ for i in range(n):
     tmp = file1.readline().split()[2:]
     tmp[0]=float(tmp[0][:3]+"."+tmp[0][3:])
     tmp[1]=float(tmp[1][:2]+"."+tmp[1][2:])
-    #koord.append([tmp[1], tmp[0]])
     tmp = knoten(i+1, tmp[0], tmp[1])
     g.add_knoten(tmp)
 
 print(g.adj[10][0].get_alles())
-
-
 
 
 file2 = open("USA-road-d.NY.gr/USA-road-d.NY.gr","r")
@@ -124,18 +121,29 @@ for i in range(733844):
 
 print(g.adj[10][3].get_alles())
 
+
+
+
 #print(g.dijkstra(1)[1][0:10])
 x = g.dijkstra(38784)
 z = weg_ausgeben(x[1], 38784, 243450)
 
 print("berechnet")
 
+
+
+
 m = folium.Map(location=(41, -73), zoom_start=10)
-fg = folium.FeatureGroup(name="Weg").add_to(m)
+#fg = folium.FeatureGroup(name="Weg").add_to(m)
+
+
 coor=[]
 for i in z:
     #folium.Marker([g.adj[i][0].lon, g.adj[i][0].lat]).add_to(fg)
     coor.append([g.adj[i][0].lon, g.adj[i][0].lat])
+
+folium.Marker(coor[0]).add_to(m)
+folium.Marker(coor[-1]).add_to(m)
 
 folium.PolyLine(
     locations=coor,
