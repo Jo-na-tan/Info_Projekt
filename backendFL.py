@@ -138,6 +138,49 @@ def datei_arbeit():
             if j.knt1==tmp[1] or j.knt2==tmp[1]:
                 j.add_distZeit(tmp[2])
 
+# kopiert
+from numpy import sin, cos, arccos, pi, round
+
+def rad2deg(radians):
+    degrees = radians * 180 / pi
+    return degrees
+
+def deg2rad(degrees):
+    radians = degrees * pi / 180
+    return radians
+
+def getDistanceBetweenPointsNew(latitude1, longitude1, latitude2, longitude2, unit = 'miles'):
+    
+    theta = longitude1 - longitude2
+    
+    distance = 60 * 1.1515 * rad2deg(
+        arccos(
+            (sin(deg2rad(latitude1)) * sin(deg2rad(latitude2))) + 
+            (cos(deg2rad(latitude1)) * cos(deg2rad(latitude2)) * cos(deg2rad(theta)))
+        )
+    )
+    
+    if unit == 'miles':
+        return round(distance, 2)
+    if unit == 'kilometers':
+        return round(distance * 1.609344, 2)
+
+
+
+
+
+def naehsten_knoten_finden(lat, lon):
+    mini = [10000000, 0]
+    for i in range(1, g.get_laenge()):
+        tmp = getDistanceBetweenPointsNew(lat, lon, g.adj[i][0].lat, g.adj[i][0].lon)
+        if tmp < mini[0]:
+            mini[0] = tmp
+            mini[1] = i
+    return mini[1]
+
+
+
+
 def main(start, end):
     tmp = g.dijkstra_weg(start, end)
     distanz_weg = tmp[0][end]
@@ -179,7 +222,7 @@ g = graph([[]])
 
 datei_arbeit()
 
-
+main(5, 48)
 
 
 
