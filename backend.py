@@ -1,6 +1,8 @@
 from queue import PriorityQueue
 import folium
 from folium.plugins import Draw
+import math
+
 
 class knoten:
     def __init__(self, num, lat, lon):
@@ -8,8 +10,6 @@ class knoten:
         self.lat = lat
         self.lon = lon
 
-    def get_alles(self):
-        return self.num, self.lat, self.lon
 
 class kante:
     def __init__(self, knt1, knt2, distWeg):
@@ -19,9 +19,6 @@ class kante:
 
     def add_distZeit(self, distZeit):
         self.distZeit = distZeit
-    
-    def get_alles(self):
-        return self.knt1, self.knt2, self.distWeg
 
     def get_anderen_knoten(self, knt):
         if (self.knt1==knt):
@@ -42,7 +39,7 @@ class graph:
     
     def add_kante(self, kante):
         self.adj[kante.knt1].append(kante)
-        #self.adj[kante.knt2].append(kante)
+        #self.adj[kante.knt2].append(kante) # nur bei ungerichtetem Graphen
 
 
     def dijkstra_weg(self, start, end):
@@ -54,7 +51,6 @@ class graph:
         
         while pq.qsize()>0:
             akt = pq.get()
-            #print(akt)
             d = akt[0]
             knt = akt[1]
             vor = akt[2]
@@ -77,7 +73,6 @@ class graph:
         
         while pq.qsize()>0:
             akt = pq.get()
-            #print(akt)
             d = akt[0]
             knt = akt[1]
             vor = akt[2]
@@ -102,7 +97,7 @@ def get_weg(vorg, start, end):
     return weg[::-1]
 
 def datei_arbeit():
-    fileKoord = open("USA-road-d.NY.co/USA-road-d.NY.co","r")
+    fileKoord = open("USA-road-d.NY.co","r")
     fileKoord.readline()
 
     for i in fileKoord:
@@ -114,7 +109,7 @@ def datei_arbeit():
 
     #print(g.adj[10][0].get_alles())
 
-    fileKantenWeg = open("USA-road-d.NY.gr/USA-road-d.NY.gr","r")
+    fileKantenWeg = open("USA-road-d.NY.gr","r")
     fileKantenWeg.readline()
 
     for i in fileKantenWeg:
@@ -126,7 +121,7 @@ def datei_arbeit():
         g.add_kante(tmp)
 
 
-    fileKantenZeit = open("USA-road-t.NY.gr/USA-road-t.NY.gr","r")
+    fileKantenZeit = open("USA-road-t.NY.gr","r")
     fileKantenZeit.readline()
 
     for i in fileKantenZeit:
@@ -138,88 +133,124 @@ def datei_arbeit():
             if j.knt1==tmp[1] or j.knt2==tmp[1]:
                 j.add_distZeit(tmp[2])
 
-# kopiert
-from numpy import sin, cos, arccos, pi, round
 
-def rad2deg(radians):
-    degrees = radians * 180 / pi
-    return degrees
+# Kopie von https://gist.github.com/rochacbruno/2883505
+# Haversine formula
+# Author: Wayne Dyck        
+def getDistanceBetweenPoints(origin, destination):
+    lat1, lon1 = origin
+    lat2, lon2 = destination
+    radius = 6371 # km
 
-def deg2rad(degrees):
-    radians = degrees * pi / 180
-    return radians
+    dlat = math.radians(lat2-lat1)
+    dlon = math.radians(lon2-lon1)
+    a = math.sin(dlat/2) * math.sin(dlat/2) + math.cos(math.radians(lat1)) \
+        * math.cos(math.radians(lat2)) * math.sin(dlon/2) * math.sin(dlon/2)
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+    d = radius * c
 
-def getDistanceBetweenPointsNew(latitude1, longitude1, latitude2, longitude2, unit = 'miles'):
-    
-    theta = longitude1 - longitude2
-    
-    distance = 60 * 1.1515 * rad2deg(
-        arccos(
-            (sin(deg2rad(latitude1)) * sin(deg2rad(latitude2))) + 
-            (cos(deg2rad(latitude1)) * cos(deg2rad(latitude2)) * cos(deg2rad(theta)))
-        )
-    )
-    
-    if unit == 'miles':
-        return round(distance, 2)
-    if unit == 'kilometers':
-        return round(distance * 1.609344, 2)
-
-
+    return d
 
 
 
 def naechsten_knoten_finden(lat, lon):
     mini = [10000000, 0]
     for i in range(1, g.get_laenge()):
-        tmp = getDistanceBetweenPointsNew(lat, lon, g.adj[i][0].lat, g.adj[i][0].lon)
-        #print(tmp)
+        tmp = getDistanceBetweenPoints((lat, lon), (g.adj[i][0].lat, g.adj[i][0].lon))
+        #print(tmp, i)
         if tmp < mini[0]:
             mini[0] = tmp
             mini[1] = i
     return mini[1]
 
-def main(start, end):
+def main(startk, endk):
+
+    startk = startk[::-1]
+    endk = endk[::-1]
+
+    # naechste Knoten zu geg. Koord. finden
+    start = naechsten_knoten_finden(startk[0], startk[1])
+    end = naechsten_knoten_finden(endk[0], endk[1])
+
+    # kuerzester Weg mit Dijkstra
     tmp = g.dijkstra_weg(start, end)
     distanz_weg = tmp[0][end]
-    tmp = get_weg(tmp[1], start, end)
+    weg = get_weg(tmp[1], start, end)
+    print("Weg berechnet")
 
+    # Koordinaten des Weges
     koor=[]
-    for i in tmp:
+    for i in weg:
         koor.append([g.adj[i][0].lat, g.adj[i][0].lon])
 
-    m = folium.Map(location=(41, -73), zoom_start=8)
-    folium.Marker(koor[0]).add_to(m)
-    folium.Marker(koor[-1]).add_to(m)
+    # Karte erstellen
+    m = folium.Map()
+    Draw(export=True, draw_options={'polyline': False, 'circlemarker': False, 'polygon': False, 'circle': False, 'rectangle': False}).add_to(m)
 
+    # Start und Ziel Marker hinzufuegen
+    folium.Marker(startk, tooltip="gewählter Start").add_to(m)
+    folium.Marker(endk, tooltip="gewähltes Ziel").add_to(m)
+
+    kw = {"prefix": "fa", "color": "blue", "icon": "arrow-down"}
+    icon = folium.Icon(angle=0, **kw)
+    folium.Marker(koor[0], icon=icon, tooltip="Start").add_to(m)
+    kw = {"prefix": "fa", "color": "blue", "icon": "flag"}
+    icon = folium.Icon(angle=0, **kw)
+    folium.Marker(koor[-1], icon=icon, tooltip="Ziel").add_to(m)
+
+    # naechsten Knoten mit gewaehltem Verbinden
+    folium.PolyLine([startk, koor[0]], color="black", dash_array="10").add_to(m)
+    folium.PolyLine([endk, koor[-1]], color="black", dash_array="10").add_to(m)
+
+    # Weg als Linie hinzufuegen
     folium.PolyLine(locations=koor, color="red", weight=3, tooltip="kürzester Weg").add_to(m)
 
-
-
+    # geringste Zeit mit Dijkstra
     tmp = g.dijkstra_zeit(start, end)
     distanz_zeit = tmp[0][end]
-    tmp = get_weg(tmp[1], start, end)
+    weg = get_weg(tmp[1], start, end)
+    print("Zeit berechnet")
 
+    # Koordinaten des Weges, Weg hinzufuegen
     koor=[]
-    for i in tmp:
+    for i in weg:
         koor.append([g.adj[i][0].lat, g.adj[i][0].lon])
     
     folium.PolyLine(locations=koor, color="green", weight=3, tooltip="geringste Zeit").add_to(m)
 
     
-    print("berechnet")
-    print(g.adj[1][0].lat)
-
-    return m, distanz_weg
-
+    return m, distanz_weg, distanz_zeit
 
 
 
 g = graph([[]])
-
 datei_arbeit()
 
+print("fertig")
+
 #main(5, 654)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #print(naechsten_knoten_finden(41.093796, -73.524567))
 
