@@ -153,14 +153,13 @@ def getDistanceBetweenPoints(origin, destination):
 
 
 
-def naechsten_knoten_finden(lat, lon):
+def naehsten_knoten_finden(lat, lon):
     mini = [10000000, 0]
     for i in range(1, g.get_laenge()):
         tmp = getDistanceBetweenPoints((lat, lon), (g.adj[i][0].lat, g.adj[i][0].lon))
         #print(tmp, i)
         if tmp < mini[0]:
-            mini[0] = tmp
-            mini[1] = i
+            mini=[tmp, i]
     return mini[1]
 
 def main(startk, endk):
@@ -168,9 +167,9 @@ def main(startk, endk):
     startk = startk[::-1]
     endk = endk[::-1]
 
-    # naechste Knoten zu geg. Koord. finden
-    start = naechsten_knoten_finden(startk[0], startk[1])
-    end = naechsten_knoten_finden(endk[0], endk[1])
+    # naehste Knoten zu geg. Koord. finden
+    start = naehsten_knoten_finden(startk[0], startk[1])
+    end = naehsten_knoten_finden(endk[0], endk[1])
 
     # kuerzester Weg mit Dijkstra
     tmp = g.dijkstra_weg(start, end)
@@ -198,7 +197,7 @@ def main(startk, endk):
     icon = folium.Icon(angle=0, **kw)
     folium.Marker(koor[-1], icon=icon, tooltip="Ziel").add_to(m)
 
-    # naechsten Knoten mit gewaehltem Verbinden
+    # naehsten Knoten mit gewaehltem Verbinden
     folium.PolyLine([startk, koor[0]], color="black", dash_array="10").add_to(m)
     folium.PolyLine([endk, koor[-1]], color="black", dash_array="10").add_to(m)
 
@@ -252,7 +251,7 @@ print("fertig")
 
 
 
-#print(naechsten_knoten_finden(41.093796, -73.524567))
+#print(naehsten_knoten_finden(41.093796, -73.524567))
 
 #main(5, 645)
 
