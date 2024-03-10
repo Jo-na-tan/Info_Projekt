@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt,ngerman]{scrartcl}
+\documentclass[a4paper,12pt,ngerman]{scrartcl}
 \usepackage{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8x]{inputenc}
@@ -74,13 +74,14 @@ inputencoding=utf8x
 \maketitle
 \tableofcontents
 
-\vspace{0.5cm}
+\vspace{1cm}
 
-Projekt verfügbar unter \url{https://kartennavigation.streamlit.app}\\
-Code verfügbar unter \url{}
+Projekt verfügbar unter \url{https://kartennavigation.streamlit.app}
+
+Code verfügbar unter \url{https://github.com/Jo-na-tan/Info_Projekt}
 
 \section{Problemstellung und Kundenanforderungen}
-Bei der Aufgabe handelt es sich um ein 3-dimensionales bin packing problem, bei dem eine gegebene Menge von Quadern in einen Würfel platziert werden, wobei ein Würfel schon platziert ist. Im folgenden wird die Kiste in “Plätze” aufgeteilt, wobei ein Platz die Maße (1,1,1) hat. Damit ist das Problem NP-schwer, weshalb ein Brute-Force-Verfahren genutzt wird. Zur Lösung wird zunächst ein Quader in Ebene 0 in der Ecke hinten links platziert. Dabei gibt es 3!=6 Möglichkeiten von Drehungen (es müssen keine Drehungen, bei dem der Quader nach unten, nach links oder nach hinten ausgedehnt,  beachtet werden, da beim genannten Startpunkt begonnen wird). Nun wird der nächste freie Platz, bei dem alle unteren, linken und hinteren Plätze bereits belegt sind, von einem noch nicht benutzten Quader belegt. Dies wird so oft durchgeführt, bis alle Quader verwendet wurden, also eine Lösung gefunden wurde. Dies funktioniert nach dem Prinzip der Tiefensuche, da wenn keine Lösung für eine Anordnung gefunden wurde, zunächst der als letztes platzierte Würfel durch andere noch verfügbare ersetzt wird, wenn hier keine Lösung gefunden wurde, dann der vorletzte usw. Der Platz des goldenen Würfels ist von Anfang an belegt. Im Worst-Case ergibt sich damit eine Laufzeit von $\mathcal{O}(n!)$, wenn alle möglichen Anordnungen von Quadern betrachtet werden müssen.
+Ziel des Projektes ist es, eine Karte von New York zu erstellen, die den kürzesten Weg zwischen zwei wählbaren Punkten anzeigt. Dabei soll der Kunde eine interaktive Karte erhalten, das heißt, sie kann bewegt werden und es kann hinein- und herausgezoomt werden. Auf dieser Karte soll es möglich sein, zwei Punkte zu wählen, zwischen denen sowohl die Route mit dem kürzesten Weg, als auch die Route mit der geringsten Zeit angezeigt wird. Weiterhin soll die kürzeste Zeit in Minuten und der kürzeste Weg in Meilen angegeben werden. Wenn ein Punkt gewählt wird, der nicht im Straßennetz vorhanden ist, soll der nächste Punkt des Straßennetzes als Start- beziehungsweise Endpunkt der Route benutzt werden. Dies soll mithilfe einer Webseite dargestellt werden, die dem Kunden jederzeit zur Verfügung steht. Auch soll diese Seite intuitiv und einfach zu bedienen sein.
 
 \newpage
 \section{Planung}
@@ -92,7 +93,7 @@ Bei der Aufgabe handelt es sich um ein 3-dimensionales bin packing problem, bei 
 \end{figure}
 
 \section{Analyse informatischer Anforderungen}
-ere
+Um die Anforderungen zu erfüllen, wird bei der Routensuche mit objektorientierter Programmierung gearbeitet. Dabei sind Kanten, Knoten und Graphen Objekte mit den im Klassendiagramm dargestellten Attributen. Zunächst muss das Straßennetz mit txt-Dateien von \url{http://www.diag.uniroma1.it/challenge9/download.shtml} eingelesen (Kanten haben in den Dateien Zeit- und Wegangaben und Knoten haben Koordinaten) und in die Objekte überführt werden. Zum Berechnen der Routen für die geringste Zeit und kürzesten Weg wird der Dijkstra-Algorithmus mit Priority-Queue verwendet, der abbricht, wenn das Ziel gefunden wurde. Dafür muss allerdings zuerst der zum gewählten Startpunkt nächste Knoten des Straßennetzes gefunden werden, wobei alle Knoten durchgegangen werden und der mit dem kürzesten Abstand, der mit der Haversine-Formel berechnet wird, gewählt wird. Mit dem Paket folium können die Punkte und die Routen auf einer Karte angezeigt werden. Auch die Wahl von zwei Punkten wird mit diesem Paket ermöglicht. Mit streamlit und streamlit-folium kann ein Web-Interface erstellt werden, das mit der Routenberechnung verknüpft wird.
 
 \newpage
 \section{Diagramme}
@@ -125,7 +126,9 @@ ere
 \end{figure}
 
 \newpage
-\section{Umsetzung}
-d fghgh fghfgh fg
+\section{Testungen und Vergleich mit Anforderungen}
+Neben den von Python durchgeführten statischen Testverfahren wurden auch dynamische Testverfahren verwendet. Dazu wurden während der Implementierung Komponententests (ein Beispiel auskommentiert am Ende von backend.py) durchgeführt. Hier wurden die einzelnen Klassen und die einzelnen Funktionen mit Minimaltests, also einem Graphen mit nur zwei Knoten und einer Kante und mit den gegebenen Daten getestet, wobei dort sehr kurze Routen gewählt wurden, sodass sie nachvollziehbar waren. Auch im Frontend wurden die Komponenten, wie z.B. der Button, einzeln getestet. Das Zusammenspiel der Klassen und Funktionen wurde im Integrationstest getestet und das ganze System im Systemtest. Am Schluss fand der Auslieferungstest statt, bei dem die Webseite aus der Sicht des Kunden bedient wurde. Hier ergibt sich ein unbeachteter Extremfall, bei dem der Kunde so stark aus der Karte herauszoomen kann, dass die Weltkarte zweimal zu sehen ist und auch ein Punkt auf dem “zweiten New York” gewählt werden kann, wodurch die Route nicht berechnet werden kann. Dieses Problem ist allerdings auf das Paket folium zurückzuführen. \\
+Damit konnten alle gestellten Anforderungen weitesgehend erfüllt werden. Allerdings ist auf der im Internet verfügbaren Webseite mit einer langen Laufzeit zu rechnen, da die dort genutzten Ressourcen nicht für die Datenmengen ausreichen. Wenn dies allerdings lokal betrieben wird, ist die Laufzeit akzeptabel. Auch ist aufgrund der ungenau angegebenen Koordinaten der Knoten des Straßennetzes in einigen Fällen eine minimale Verschiebung der Route von der Straße erkennbar.
+
 
 \end{document}

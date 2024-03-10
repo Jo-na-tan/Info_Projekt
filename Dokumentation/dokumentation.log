@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.21)  10 MAR 2024 16:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.21)  10 MAR 2024 18:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -31,15 +31,15 @@ Package: tocbasic 2022/07/04 v3.37 KOMA-Script package (handling toc-files)
 )
 Package tocbasic Info: babel extension for `toc' omitted
 (tocbasic)             because of missing \bbl@set@language on input line 135.
-Package scrartcl Info: You've used standard option `10pt'.
+Package scrartcl Info: You've used standard option `12pt'.
 (scrartcl)             This is correct!
-(scrartcl)             Internally I'm using `fontsize=10pt'.
+(scrartcl)             Internally I'm using `fontsize=12pt'.
 (scrartcl)             If you'd like to set the option with \KOMAoptions,
-(scrartcl)             you'd have to use `fontsize=10pt' there
-(scrartcl)             instead of `10pt', too.
-Class scrartcl Info: File `scrsize10pt.clo' used to setup font sizes on input line 2319.
- (e:/Programme/texlive/2022/texmf-dist/tex/latex/koma-script/scrsize10pt.clo
-File: scrsize10pt.clo 2022/07/04 v3.37 KOMA-Script font size class option (10pt)
+(scrartcl)             you'd have to use `fontsize=12pt' there
+(scrartcl)             instead of `12pt', too.
+Class scrartcl Info: File `scrsize12pt.clo' used to setup font sizes on input line 2319.
+ (e:/Programme/texlive/2022/texmf-dist/tex/latex/koma-script/scrsize12pt.clo
+File: scrsize12pt.clo 2022/07/04 v3.37 KOMA-Script font size class option (12pt)
 ) (e:/Programme/texlive/2022/texmf-dist/tex/latex/koma-script/typearea.sty
 Package: typearea 2022/07/04 v3.37 KOMA-Script package (type area)
 \ta@bcor=\skip48
@@ -55,21 +55,21 @@ Package typearea Info: You've used standard option `a4paper'.
 \ta@temp=\skip51
 \footheight=\skip52
 Package typearea Info: These are the values describing the layout:
-(typearea)             DIV  = 8
+(typearea)             DIV  = 12
 (typearea)             BCOR = 0.0pt
 (typearea)             \paperwidth      = 597.50793pt
-(typearea)              \textwidth      = 373.44246pt
-(typearea)              DIV departure   = -4%
-(typearea)              \evensidemargin = 39.76274pt
-(typearea)              \oddsidemargin  = 39.76274pt
+(typearea)              \textwidth      = 448.13095pt
+(typearea)              DIV departure   = -6%
+(typearea)              \evensidemargin = 2.4185pt
+(typearea)              \oddsidemargin  = 2.4185pt
 (typearea)             \paperheight     = 845.04694pt
-(typearea)              \textheight     = 538.0pt
-(typearea)              \topmargin      = 0.36087pt
-(typearea)              \headheight     = 15.0pt
-(typearea)              \headsep        = 18.0pt
-(typearea)              \topskip        = 10.0pt
-(typearea)              \footskip       = 42.0pt
-(typearea)              \baselineskip   = 12.0pt
+(typearea)              \textheight     = 635.5pt
+(typearea)              \topmargin      = -41.72441pt
+(typearea)              \headheight     = 18.125pt
+(typearea)              \headsep        = 21.75pt
+(typearea)              \topskip        = 12.0pt
+(typearea)              \footskip       = 50.75pt
+(typearea)              \baselineskip   = 14.5pt
 (typearea)              on input line 1766.
 )
 \c@part=\count186
@@ -925,15 +925,15 @@ LaTeX Font Info:    ... okay on input line 72.
 * \textheight=702.78308pt
 * \oddsidemargin=-1.1381pt
 * \evensidemargin=-1.1381pt
-* \topmargin=-34.1381pt
-* \headheight=15.0pt
-* \headsep=18.0pt
-* \topskip=10.0pt
+* \topmargin=-41.0131pt
+* \headheight=18.125pt
+* \headsep=21.75pt
+* \topskip=12.0pt
 * \footskip=14.22636pt
-* \marginparwidth=74.68849pt
+* \marginparwidth=49.79233pt
 * \marginparsep=12.8401pt
 * \columnsep=10.0pt
-* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -1008,53 +1008,53 @@ File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [1
 
 {e:/Programme/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<./Bilder//Pipelinediagramm.png, id=34, 867.99281pt x 401.24907pt>
+<./Bilder//Pipelinediagramm.png, id=31, 867.99281pt x 401.24907pt>
 File: ./Bilder//Pipelinediagramm.png Graphic file (type png)
 <use ./Bilder//Pipelinediagramm.png>
-Package pdftex.def Info: ./Bilder//Pipelinediagramm.png  used on input line 89.
+Package pdftex.def Info: ./Bilder//Pipelinediagramm.png  used on input line 90.
 (pdftex.def)             Requested size: 455.24411pt x 210.45074pt.
  [2 <./Bilder//Pipelinediagramm.png>]
-<./Bilder//Klassendiagramm.png, id=43, 403.0257pt x 321.1197pt>
+<./Bilder//Klassendiagramm.png, id=41, 403.0257pt x 321.1197pt>
 File: ./Bilder//Klassendiagramm.png Graphic file (type png)
 <use ./Bilder//Klassendiagramm.png>
-Package pdftex.def Info: ./Bilder//Klassendiagramm.png  used on input line 101.
+Package pdftex.def Info: ./Bilder//Klassendiagramm.png  used on input line 102.
 (pdftex.def)             Requested size: 455.24411pt x 362.74344pt.
-<./Bilder//Objektdiagramm.png, id=44, 469.755pt x 224.037pt>
+<./Bilder//Objektdiagramm.png, id=42, 469.755pt x 224.037pt>
 File: ./Bilder//Objektdiagramm.png Graphic file (type png)
 <use ./Bilder//Objektdiagramm.png>
-Package pdftex.def Info: ./Bilder//Objektdiagramm.png  used on input line 108.
+Package pdftex.def Info: ./Bilder//Objektdiagramm.png  used on input line 109.
 (pdftex.def)             Requested size: 455.24411pt x 217.11734pt.
-<./Bilder//Sequenzdiagramm.png, id=45, 575.5101pt x 430.9701pt>
+<./Bilder//Sequenzdiagramm.png, id=43, 575.5101pt x 430.9701pt>
 File: ./Bilder//Sequenzdiagramm.png Graphic file (type png)
 <use ./Bilder//Sequenzdiagramm.png>
-Package pdftex.def Info: ./Bilder//Sequenzdiagramm.png  used on input line 115.
+Package pdftex.def Info: ./Bilder//Sequenzdiagramm.png  used on input line 116.
 (pdftex.def)             Requested size: 455.24411pt x 340.9098pt.
-<./Bilder//Struktogramm.png, id=46, 893.3375pt x 301.125pt>
+<./Bilder//Struktogramm.png, id=44, 893.3375pt x 301.125pt>
 File: ./Bilder//Struktogramm.png Graphic file (type png)
 <use ./Bilder//Struktogramm.png>
-Package pdftex.def Info: ./Bilder//Struktogramm.png  used on input line 122.
+Package pdftex.def Info: ./Bilder//Struktogramm.png  used on input line 123.
 (pdftex.def)             Requested size: 455.24411pt x 153.45683pt.
- [3 <./Bilder//Klassendiagramm.png> <./Bilder//Objektdiagramm.png>] 
+ [3 <./Bilder//Klassendiagramm.png> <./Bilder//Objektdiagramm.png>] [4 <./Bilder//Sequenzdiagramm.png> <./Bilder//Struktogramm.png>] 
 AED: lastpage setting LastPage
-[4 <./Bilder//Sequenzdiagramm.png> <./Bilder//Struktogramm.png>] (./dokumentation.aux
+[5] (./dokumentation.aux
 Package cleveref Info: loaded `ngerman' language definitions on input line 22.
 )
 Package rerunfilecheck Info: File `dokumentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 19524 strings out of 477678
- 372922 string characters out of 5828477
- 865397 words of memory out of 5000000
- 38047 multiletter control sequences out of 15000+600000
- 483588 words of font info for 65 fonts, out of 8000000 for 9000
+ 19526 strings out of 477678
+ 372980 string characters out of 5828477
+ 864427 words of memory out of 5000000
+ 38050 multiletter control sequences out of 15000+600000
+ 484506 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  108i,20n,106p,10656b,700s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{e:/Programme/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on dokumentation.pdf (4 pages, 290897 bytes).
+{e:/Programme/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on dokumentation.pdf (5 pages, 281464 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
- 16 named destinations out of 1000 (max. 500000)
+ 127 PDF objects out of 1000 (max. 8388607)
+ 93 compressed objects within 1 object stream
+ 17 named destinations out of 1000 (max. 500000)
  66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

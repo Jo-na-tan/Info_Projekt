@@ -28,6 +28,7 @@ daten = load_data(st.session_state.start, st.session_state.end)
 
 
 st.title("Informatik OOP Projekt - Kartennavigation") 
+st.text("Bitte wählen Sie mit dem \"Draw a marker\"-Tool zwei Punkte und drücken Sie dann auf \"Weg berechnen\"")
 
 c1, c2 = st.columns([2,1])
 

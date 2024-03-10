@@ -3,5 +3,5 @@
 \contentsline {section}{\numberline {2}Planung}{2}{section.2}%
 \contentsline {section}{\numberline {3}Analyse informatischer Anforderungen}{2}{section.3}%
 \contentsline {section}{\numberline {4}Diagramme}{3}{section.4}%
-\contentsline {section}{\numberline {5}Umsetzung}{4}{section.5}%
+\contentsline {section}{\numberline {5}Testungen und Vergleich mit Anforderungen}{4}{section.5}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

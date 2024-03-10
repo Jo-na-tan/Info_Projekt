@@ -151,7 +151,7 @@ def getDistanceBetweenPoints(origin, destination):
 
 
 
-def naehsten_knoten_finden(lat, lon):
+def naechsten_knoten_finden(lat, lon):
     mini = [10000000, 0]
     for i in range(1, g.get_laenge()):
         tmp = getDistanceBetweenPoints((lat, lon), (g.adj[i][0].lat, g.adj[i][0].lon))
@@ -165,15 +165,15 @@ def main(startk, endk):
     startk = startk[::-1]
     endk = endk[::-1]
 
-    # naehste Knoten zu geg. Koord. finden
-    start = naehsten_knoten_finden(startk[0], startk[1])
-    end = naehsten_knoten_finden(endk[0], endk[1])
+    # naechste Knoten zu geg. Koord. finden
+    start = naechsten_knoten_finden(startk[0], startk[1])
+    end = naechsten_knoten_finden(endk[0], endk[1])
 
     # kuerzester Weg mit Dijkstra
     tmp = g.dijkstra_weg(start, end)
     distanz_weg = tmp[0][end]
     weg = get_weg(tmp[1], start, end)
-    print("Weg berechnet")
+    #print("Weg berechnet")
 
     # Koordinaten des Weges
     koor=[]
@@ -195,7 +195,7 @@ def main(startk, endk):
     icon = folium.Icon(angle=0, **kw)
     folium.Marker(koor[-1], icon=icon, tooltip="Ziel").add_to(m)
 
-    # naehsten Knoten mit gewaehltem Verbinden
+    # naechsten Knoten mit gewaehltem Verbinden
     folium.PolyLine([startk, koor[0]], color="black", dash_array="10").add_to(m)
     folium.PolyLine([endk, koor[-1]], color="black", dash_array="10").add_to(m)
 
@@ -206,7 +206,7 @@ def main(startk, endk):
     tmp = g.dijkstra_zeit(start, end)
     distanz_zeit = tmp[0][end]
     weg = get_weg(tmp[1], start, end)
-    print("Zeit berechnet")
+    #print("Zeit berechnet")
 
     # Koordinaten des Weges, Weg hinzufuegen
     koor=[]
@@ -215,7 +215,10 @@ def main(startk, endk):
     
     folium.PolyLine(locations=koor, color="green", weight=3, tooltip="geringste Zeit").add_to(m)
 
-    
+    # Gauss
+    folium.Marker((52.34371, 14.51508), tooltip="Carl-Friedrich-Gauß-Gymnasium").add_to(m)
+
+
     return m, distanz_weg, distanz_zeit
 
 
@@ -223,45 +226,12 @@ def main(startk, endk):
 g = graph([[]])
 datei_arbeit()
 
-print("fertig")
-
-#main(5, 654)
+#print("fertig")
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#print(naehsten_knoten_finden(41.093796, -73.524567))
-
-#main(5, 645)
-
-
-
-
-
-
-
-
-
-
+# Beispiel für Testungen
 
 # a = knoten(0, 76.4345434, 56.634545)
 # b = knoten(1, 76.4345434, 56.634545)
@@ -274,49 +244,7 @@ print("fertig")
 #g.add_knoten(a)
 #print(g.adj[1].num)
 
-# print(g.adj[10][3].get_alles())
 
+#print(naechsten_knoten_finden(41.093796, -73.524567))
 
-
-
-#print(g.dijkstra(1)[1][0:10])
-# x = g.dijkstra(38784)
-# z = get_weg(x[1], 38784, 243450)
-
-# print("berechnet")
-
-
-
-    
-
-
-# m = folium.Map(location=(41, -73), zoom_start=10)
-
-#fg = folium.FeatureGroup(name="Weg").add_to(m)
-
-
-# coor=[]
-# for i in z:
-#     #folium.Marker([g.adj[i][0].lon, g.adj[i][0].lat]).add_to(fg)
-#     coor.append([g.adj[i][0].lon, g.adj[i][0].lat])
-
-# folium.Marker(coor[0]).add_to(m)
-# folium.Marker(coor[-1]).add_to(m)
-
-# folium.PolyLine(
-#     locations=coor,
-#     color="#FF0000",
-#     weight=5,
-#     tooltip="From Boston to San Francisco",
-# ).add_to(m)
-
-
-# folium.Marker([41, -73], popup='My Home').add_to(m)
-#folium.LayerControl().add_to(m)
-
-#m.save("index.html")
-
-
-# import streamlit as st
-# from streamlit_folium import st_folium
-# st_data = st_folium(m, width=725)
+#main(5, 645)
