@@ -60,6 +60,7 @@ inputencoding=utf8x
 
 % Diese beiden Pakete müssen zuletzt geladen werden
 %\usepackage{hyperref} % Anklickbare Links im Dokument
+\usepackage{hyperref}
 \usepackage{cleveref}
 
 \graphicspath{{./Bilder/}}
@@ -75,6 +76,8 @@ inputencoding=utf8x
 
 \vspace{0.5cm}
 
+Projekt verfügbar unter \url{https://kartennavigation.streamlit.app}\\
+Code verfügbar unter \url{}
 
 \section{Problemstellung und Kundenanforderungen}
 Bei der Aufgabe handelt es sich um ein 3-dimensionales bin packing problem, bei dem eine gegebene Menge von Quadern in einen Würfel platziert werden, wobei ein Würfel schon platziert ist. Im folgenden wird die Kiste in “Plätze” aufgeteilt, wobei ein Platz die Maße (1,1,1) hat. Damit ist das Problem NP-schwer, weshalb ein Brute-Force-Verfahren genutzt wird. Zur Lösung wird zunächst ein Quader in Ebene 0 in der Ecke hinten links platziert. Dabei gibt es 3!=6 Möglichkeiten von Drehungen (es müssen keine Drehungen, bei dem der Quader nach unten, nach links oder nach hinten ausgedehnt,  beachtet werden, da beim genannten Startpunkt begonnen wird). Nun wird der nächste freie Platz, bei dem alle unteren, linken und hinteren Plätze bereits belegt sind, von einem noch nicht benutzten Quader belegt. Dies wird so oft durchgeführt, bis alle Quader verwendet wurden, also eine Lösung gefunden wurde. Dies funktioniert nach dem Prinzip der Tiefensuche, da wenn keine Lösung für eine Anordnung gefunden wurde, zunächst der als letztes platzierte Würfel durch andere noch verfügbare ersetzt wird, wenn hier keine Lösung gefunden wurde, dann der vorletzte usw. Der Platz des goldenen Würfels ist von Anfang an belegt. Im Worst-Case ergibt sich damit eine Laufzeit von $\mathcal{O}(n!)$, wenn alle möglichen Anordnungen von Quadern betrachtet werden müssen.
