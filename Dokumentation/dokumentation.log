@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.21)  9 MAR 2024 14:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.21)  10 MAR 2024 14:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -870,11 +870,11 @@ File: ./Bilder//Pipelinediagramm.png Graphic file (type png)
 Package pdftex.def Info: ./Bilder//Pipelinediagramm.png  used on input line 86.
 (pdftex.def)             Requested size: 455.24411pt x 210.45074pt.
  [2 <./Bilder//Pipelinediagramm.png>]
-<./Bilder//Klassendiagramm.png, id=21, 411.4572pt x 337.0191pt>
+<./Bilder//Klassendiagramm.png, id=21, 403.0257pt x 321.1197pt>
 File: ./Bilder//Klassendiagramm.png Graphic file (type png)
 <use ./Bilder//Klassendiagramm.png>
 Package pdftex.def Info: ./Bilder//Klassendiagramm.png  used on input line 98.
-(pdftex.def)             Requested size: 455.24411pt x 372.89743pt.
+(pdftex.def)             Requested size: 455.24411pt x 362.74344pt.
 <./Bilder//Objektdiagramm.png, id=22, 469.755pt x 224.037pt>
 File: ./Bilder//Objektdiagramm.png Graphic file (type png)
 <use ./Bilder//Objektdiagramm.png>
@@ -904,7 +904,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  108i,20n,106p,10656b,662s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {e:/Programme/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb><e:/Programme/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on dokumentation.pdf (4 pages, 261219 bytes).
+Output written on dokumentation.pdf (4 pages, 262206 bytes).
 PDF statistics:
  72 PDF objects out of 1000 (max. 8388607)
  39 compressed objects within 1 object stream

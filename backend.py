@@ -107,8 +107,6 @@ def datei_arbeit():
         tmp = knoten(tmp[0], tmp[2], tmp[1])
         g.add_knoten(tmp)
 
-    #print(g.adj[10][0].get_alles())
-
     fileKantenWeg = open("USA-road-d.NY.gr","r")
     fileKantenWeg.readline()
 

@@ -27,7 +27,7 @@ daten = load_data(st.session_state.start, st.session_state.end)
 
 
 
-st.title("Informatik OOP Projekt") 
+st.title("Informatik OOP Projekt - Kartennavigation") 
 
 c1, c2 = st.columns([2,1])
 
@@ -50,11 +50,4 @@ with c2:
     st.write("Zielkoordinaten:", st.session_state.end[1], st.session_state.end[0])
 
     st.write("kürzeste Länge:", round(daten[1]/16035, 1), "Meilen")
-    st.write("geringste Zeit:", round(daten[2]/21972, 1), "Minuten")
-
-
-
-
-
-
-#st.write(st_data)
+    st.write("geringste Zeit:", round(daten[2]/15293, 1), "Minuten")
